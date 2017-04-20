@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Nave : MonoBehaviour {
 
-	public float speed;
+	public float sideSpeed,
+				 upSpeed,
+				 forward;
 	public Vector3 movement;
 	private Rigidbody rb;
 
@@ -20,7 +22,8 @@ public class Nave : MonoBehaviour {
 	}
 
 	void Move(){
-		movement = new Vector3 (speed * Input.GetAxis("Horizontal"), 0, 0);
+		movement = new Vector3 (forward, 0, 0);
 		rb.AddForce (movement);
+		transform.Rotate(Input.GetAxis("Vertical") * upSpeed, 0, Input.GetAxis("Horizontal") * sideSpeed);
 	}
 }
