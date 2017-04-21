@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour {
 
-	public GameObject target;
+    public GameObject player;
+    public Vector3 cameraOffset;
 
-	void Update () {
-		transform.position = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z); 
-	}
+    void Update()
+    {
+        Vector3 pos = player.transform.position;
+        pos += cameraOffset;
+        transform.position = pos;
+        transform.LookAt(player.transform);
+    }
 }
